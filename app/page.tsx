@@ -1,6 +1,11 @@
 import Link from 'next/link';
+import { getUser, testGetChapterNames } from './db';
 
-export default function Page() {
+export default async function Page() {
+  // const myData = await testGetChapterNames()
+  // const chapterNames = myData.map((data) => data.chapter_name)
+  const userData = await getUser('test@example.com')
+
   return (
     <div className="flex h-screen bg-black">
       <div className="w-screen h-screen flex flex-col justify-center items-center">
@@ -69,6 +74,7 @@ export default function Page() {
           >
             Deploy to Vercel
           </a>
+          <p className='text-white underline' >{userData[0].password}</p>
         </div>
       </div>
     </div>
